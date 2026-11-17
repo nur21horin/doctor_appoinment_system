@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 244 246 248;
+  --card: 255 255 255;
+  --soft: 247 248 250;
+  --ink: 17 24 39;
+  --muted: 107 114 128;
+  --line: 229 231 235;
+  --sidebar: 23 66 63;
+}
+.dark {
+  --bg: 11 17 22;
+  --card: 19 27 34;
+  --soft: 26 36 44;
+  --ink: 236 240 243;
+  --muted: 148 160 172;
+  --line: 40 52 62;
+  --sidebar: 12 34 33;
+}
+
+@layer base {
+  html, body, #root { height: 100%; }
+  body { @apply bg-bg text-ink font-sans antialiased; }
+  ::selection { @apply bg-brand-200 text-brand-900; }
+}
+
+@layer components {
+  .card { @apply bg-card rounded-2xl border border-line/70 shadow-card; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400; }
+  .btn-primary { @apply btn bg-brand-700 text-white hover:bg-brand-800 active:bg-brand-900; }
+  .btn-outline { @apply btn border border-line bg-card text-ink hover:bg-soft; }
+  .btn-ghost { @apply btn text-muted hover:bg-soft hover:text-ink; }
+  .btn-danger { @apply btn bg-red-600 text-white hover:bg-red-700; }
+  .btn-sm { @apply px-3 py-1.5 text-xs rounded-lg; }
+  .input { @apply w-full rounded-xl border border-line bg-card px-3.5 py-2.5 text-sm text-ink placeholder:text-muted/70 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition; }
+  .input-error { @apply border-red-400 focus:border-red-500 focus:ring-red-500/20; }
+  .label { @apply mb-1.5 block text-sm font-medium text-ink; }
+  .field-error { @apply mt-1 text-xs text-red-600; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium; }
+  .table-th { @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-muted; }
+  .table-td { @apply px-4 py-3 text-sm; }
+}
+
+.scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: rgb(var(--line)); border-radius: 9999px; }
